@@ -33,7 +33,7 @@ namespace CarDekhoExcel
             this.btnFilterDekho = new System.Windows.Forms.Button();
             this.btnLoadDekho = new System.Windows.Forms.Button();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.label1 = new System.Windows.Forms.Label();
+            this.labelTR = new System.Windows.Forms.Label();
             this.FilterBox = new System.Windows.Forms.GroupBox();
             this.cmbFilter = new System.Windows.Forms.ComboBox();
             this.DisplayAttr = new System.Windows.Forms.Label();
@@ -106,7 +106,7 @@ namespace CarDekhoExcel
             // 
             // splitContainer1.Panel1
             // 
-            this.splitContainer1.Panel1.Controls.Add(this.label1);
+            this.splitContainer1.Panel1.Controls.Add(this.labelTR);
             this.splitContainer1.Panel1.Controls.Add(this.FilterBox);
             this.splitContainer1.Panel1.Controls.Add(this.Title);
             this.splitContainer1.Panel1.Controls.Add(this.btnLoadDekho);
@@ -118,13 +118,13 @@ namespace CarDekhoExcel
             this.splitContainer1.SplitterDistance = 189;
             this.splitContainer1.TabIndex = 11;
             // 
-            // label1
+            // labelTR
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(13, 158);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(0, 16);
-            this.label1.TabIndex = 10;
+            this.labelTR.AutoSize = true;
+            this.labelTR.Location = new System.Drawing.Point(13, 158);
+            this.labelTR.Name = "labelTR";
+            this.labelTR.Size = new System.Drawing.Size(0, 16);
+            this.labelTR.TabIndex = 10;
             // 
             // FilterBox
             // 
@@ -294,7 +294,7 @@ namespace CarDekhoExcel
         private System.Windows.Forms.Label Sort;
         private System.Windows.Forms.ComboBox cmbFilter;
         private System.Windows.Forms.Label DisplayAttr;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label labelTR;
     }
 }
 
