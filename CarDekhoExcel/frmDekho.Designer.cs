@@ -37,10 +37,10 @@ namespace CarDekhoExcel
             this.cmbFilter = new System.Windows.Forms.ComboBox();
             this.DisplayAttr = new System.Windows.Forms.Label();
             this.Sort = new System.Windows.Forms.Label();
-            this.none = new System.Windows.Forms.RadioButton();
-            this.desc = new System.Windows.Forms.RadioButton();
+            this.rbNone = new System.Windows.Forms.RadioButton();
+            this.rbDesc = new System.Windows.Forms.RadioButton();
             this.AttributeList = new System.Windows.Forms.ListBox();
-            this.asc = new System.Windows.Forms.RadioButton();
+            this.rbAsc = new System.Windows.Forms.RadioButton();
             this.Title = new System.Windows.Forms.Label();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -61,24 +61,26 @@ namespace CarDekhoExcel
             this.txtConsole.Multiline = true;
             this.txtConsole.Name = "txtConsole";
             this.txtConsole.ReadOnly = true;
-            this.txtConsole.Size = new System.Drawing.Size(870, 349);
+            this.txtConsole.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.txtConsole.Size = new System.Drawing.Size(863, 363);
             this.txtConsole.TabIndex = 5;
+            this.txtConsole.DoubleClick += new System.EventHandler(this.txtConsole_DoubleClick);
             // 
             // pbProgress
             // 
             this.pbProgress.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pbProgress.Location = new System.Drawing.Point(0, 0);
             this.pbProgress.Name = "pbProgress";
-            this.pbProgress.Size = new System.Drawing.Size(870, 26);
+            this.pbProgress.Size = new System.Drawing.Size(863, 28);
             this.pbProgress.TabIndex = 6;
             this.pbProgress.Visible = false;
             // 
             // btnFilterDekho
             // 
             this.btnFilterDekho.Enabled = false;
-            this.btnFilterDekho.Location = new System.Drawing.Point(358, 39);
+            this.btnFilterDekho.Location = new System.Drawing.Point(491, 20);
             this.btnFilterDekho.Name = "btnFilterDekho";
-            this.btnFilterDekho.Size = new System.Drawing.Size(98, 25);
+            this.btnFilterDekho.Size = new System.Drawing.Size(162, 90);
             this.btnFilterDekho.TabIndex = 8;
             this.btnFilterDekho.Text = "Filter Dekho";
             this.btnFilterDekho.UseVisualStyleBackColor = true;
@@ -86,7 +88,7 @@ namespace CarDekhoExcel
             // 
             // btnLoadDekho
             // 
-            this.btnLoadDekho.Location = new System.Drawing.Point(12, 95);
+            this.btnLoadDekho.Location = new System.Drawing.Point(22, 63);
             this.btnLoadDekho.Name = "btnLoadDekho";
             this.btnLoadDekho.Size = new System.Drawing.Size(155, 46);
             this.btnLoadDekho.TabIndex = 7;
@@ -110,8 +112,8 @@ namespace CarDekhoExcel
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.splitContainer2);
-            this.splitContainer1.Size = new System.Drawing.Size(870, 564);
-            this.splitContainer1.SplitterDistance = 181;
+            this.splitContainer1.Size = new System.Drawing.Size(863, 587);
+            this.splitContainer1.SplitterDistance = 188;
             this.splitContainer1.TabIndex = 11;
             // 
             // FilterBox
@@ -120,10 +122,10 @@ namespace CarDekhoExcel
             this.FilterBox.Controls.Add(this.DisplayAttr);
             this.FilterBox.Controls.Add(this.btnFilterDekho);
             this.FilterBox.Controls.Add(this.Sort);
-            this.FilterBox.Controls.Add(this.none);
-            this.FilterBox.Controls.Add(this.desc);
+            this.FilterBox.Controls.Add(this.rbNone);
+            this.FilterBox.Controls.Add(this.rbDesc);
             this.FilterBox.Controls.Add(this.AttributeList);
-            this.FilterBox.Controls.Add(this.asc);
+            this.FilterBox.Controls.Add(this.rbAsc);
             this.FilterBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FilterBox.Location = new System.Drawing.Point(183, 56);
             this.FilterBox.Name = "FilterBox";
@@ -137,7 +139,7 @@ namespace CarDekhoExcel
             this.cmbFilter.FormattingEnabled = true;
             this.cmbFilter.Location = new System.Drawing.Point(187, 41);
             this.cmbFilter.Name = "cmbFilter";
-            this.cmbFilter.Size = new System.Drawing.Size(135, 26);
+            this.cmbFilter.Size = new System.Drawing.Size(284, 26);
             this.cmbFilter.TabIndex = 11;
             // 
             // DisplayAttr
@@ -154,34 +156,35 @@ namespace CarDekhoExcel
             this.Sort.AutoSize = true;
             this.Sort.Location = new System.Drawing.Point(187, 75);
             this.Sort.Name = "Sort";
-            this.Sort.Size = new System.Drawing.Size(36, 18);
+            this.Sort.Size = new System.Drawing.Size(89, 18);
             this.Sort.TabIndex = 4;
-            this.Sort.Text = "Sort";
+            this.Sort.Text = "Sort by Year";
             // 
-            // none
+            // rbNone
             // 
-            this.none.AutoSize = true;
-            this.none.Checked = true;
-            this.none.Location = new System.Drawing.Point(406, 94);
-            this.none.Name = "none";
-            this.none.Size = new System.Drawing.Size(65, 22);
-            this.none.TabIndex = 3;
-            this.none.TabStop = true;
-            this.none.Text = "None";
-            this.none.UseVisualStyleBackColor = true;
+            this.rbNone.AutoSize = true;
+            this.rbNone.Checked = true;
+            this.rbNone.Location = new System.Drawing.Point(406, 94);
+            this.rbNone.Name = "rbNone";
+            this.rbNone.Size = new System.Drawing.Size(65, 22);
+            this.rbNone.TabIndex = 3;
+            this.rbNone.TabStop = true;
+            this.rbNone.Text = "None";
+            this.rbNone.UseVisualStyleBackColor = true;
             // 
-            // desc
+            // rbDesc
             // 
-            this.desc.AutoSize = true;
-            this.desc.Location = new System.Drawing.Point(293, 94);
-            this.desc.Name = "desc";
-            this.desc.Size = new System.Drawing.Size(107, 22);
-            this.desc.TabIndex = 2;
-            this.desc.Text = "Descending";
-            this.desc.UseVisualStyleBackColor = true;
+            this.rbDesc.AutoSize = true;
+            this.rbDesc.Location = new System.Drawing.Point(293, 94);
+            this.rbDesc.Name = "rbDesc";
+            this.rbDesc.Size = new System.Drawing.Size(107, 22);
+            this.rbDesc.TabIndex = 2;
+            this.rbDesc.Text = "Descending";
+            this.rbDesc.UseVisualStyleBackColor = true;
             // 
             // AttributeList
             // 
+            this.AttributeList.Enabled = false;
             this.AttributeList.FormattingEnabled = true;
             this.AttributeList.ItemHeight = 18;
             this.AttributeList.Items.AddRange(new object[] {
@@ -200,22 +203,22 @@ namespace CarDekhoExcel
             this.AttributeList.TabIndex = 1;
             this.AttributeList.SelectedIndexChanged += new System.EventHandler(this.AttributeList_SelectedIndexChanged);
             // 
-            // asc
+            // rbAsc
             // 
-            this.asc.AutoSize = true;
-            this.asc.Location = new System.Drawing.Point(190, 94);
-            this.asc.Name = "asc";
-            this.asc.Size = new System.Drawing.Size(97, 22);
-            this.asc.TabIndex = 0;
-            this.asc.Text = "Ascending";
-            this.asc.UseVisualStyleBackColor = true;
+            this.rbAsc.AutoSize = true;
+            this.rbAsc.Location = new System.Drawing.Point(190, 94);
+            this.rbAsc.Name = "rbAsc";
+            this.rbAsc.Size = new System.Drawing.Size(97, 22);
+            this.rbAsc.TabIndex = 0;
+            this.rbAsc.Text = "Ascending";
+            this.rbAsc.UseVisualStyleBackColor = true;
             // 
             // Title
             // 
             this.Title.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Title.AutoSize = true;
             this.Title.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Title.Location = new System.Drawing.Point(337, 9);
+            this.Title.Location = new System.Drawing.Point(314, 9);
             this.Title.Name = "Title";
             this.Title.Size = new System.Drawing.Size(156, 36);
             this.Title.TabIndex = 6;
@@ -235,18 +238,19 @@ namespace CarDekhoExcel
             // splitContainer2.Panel2
             // 
             this.splitContainer2.Panel2.Controls.Add(this.pbProgress);
-            this.splitContainer2.Size = new System.Drawing.Size(870, 379);
-            this.splitContainer2.SplitterDistance = 349;
+            this.splitContainer2.Size = new System.Drawing.Size(863, 395);
+            this.splitContainer2.SplitterDistance = 363;
             this.splitContainer2.TabIndex = 0;
             // 
             // frmDekho
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(870, 564);
+            this.ClientSize = new System.Drawing.Size(863, 587);
             this.Controls.Add(this.splitContainer1);
             this.Name = "frmDekho";
             this.Text = "Car Dekho?";
+            this.Load += new System.EventHandler(this.frmDekho_Load);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel1.PerformLayout();
             this.splitContainer1.Panel2.ResumeLayout(false);
@@ -271,10 +275,10 @@ namespace CarDekhoExcel
         private System.Windows.Forms.Button btnLoadDekho;
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.GroupBox FilterBox;
-        private System.Windows.Forms.RadioButton none;
-        private System.Windows.Forms.RadioButton desc;
+        private System.Windows.Forms.RadioButton rbNone;
+        private System.Windows.Forms.RadioButton rbDesc;
         private System.Windows.Forms.ListBox AttributeList;
-        private System.Windows.Forms.RadioButton asc;
+        private System.Windows.Forms.RadioButton rbAsc;
         private System.Windows.Forms.Label Title;
         private System.Windows.Forms.SplitContainer splitContainer2;
         private System.Windows.Forms.Label Sort;

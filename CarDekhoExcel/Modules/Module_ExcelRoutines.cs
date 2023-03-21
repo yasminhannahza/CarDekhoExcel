@@ -107,7 +107,7 @@ namespace CarDekhoExcel
             //can be edited according to preferences
             var filtered = listDekhoCars
                 .Where(x => x.Brand.ToLower().Contains(filterParam.ToLower().Trim()))
-                //.Where(y=>y.Year <= 2001)
+                //.Where(y=>y.Year <= 2001)]
                 .OrderByDescending(x=>x.Year)
                 .ToList();
 
@@ -133,23 +133,18 @@ namespace CarDekhoExcel
                 //    $"{item.Transmission}\t\t" +
                 //    $"{item.Owner}\r\n";
 
-                string lineOutput = "Brand\tModel\t\tYear\tSellingPrice\tDriven KM\tFuel\tSeller\tTransmission\tOwner\r\n";
+                string lineOutput = "Brand\tModel\t\t\t\t\tYear\tSellingPrice\tDriven KM\tFuel\tSeller\t\t\tTransmission\tOwner\r\n";
 
                 txtConsole.AppendText(lineOutput);
 
                 foreach (var item in filtered)
                 {
-                    lineOutput = $"{item.Brand,-10}\t" +
-                    $"{item.Model,-10}\t\t\t{item.Year, -20}\t" +
-                    $"{item.SellingPrice,-12}\t" +
-                    $"{item.DrivenKM,-10}\t" +
-                    $"{item.Fuel,-8}\t" +
-                    $"{item.SellerType,-10}\t" +
-                    $"{item.Transmission,-12}\t" +
-                    $"{item.Owner,-5}\r\n";
+                    lineOutput = $"{item.Brand,-10}\t{item.Model,-60}\t{item.Year,-6}\t{item.SellingPrice,-12}\t{item.DrivenKM,-10}\t{item.Fuel,-8}\t{item.SellerType,-12}\t{item.Transmission,-15}\t{item.Owner,-5}\r\n";
 
                     txtConsole.AppendText(lineOutput);
                 }
+                
+
                 txtConsole.AppendText("\r\n\r\n");
             }));
         }

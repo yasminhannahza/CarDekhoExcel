@@ -1,4 +1,5 @@
 using CarDekhoExcel.Models;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,6 +15,8 @@ namespace CarDekhoExcel
 {
     public partial class frmDekho : Form
     {
+        int sortType = 0;
+
         public frmDekho()
         {
             InitializeComponent();
@@ -52,17 +55,74 @@ namespace CarDekhoExcel
             Task.Run(async () =>
             {
                 await LoadDataSource();
+                this.Invoke(new Action(() =>
+                {
+                    AttributeList.Enabled = true;
+                }));
             });
         }
 
-        private void btnFilterDekho_Click(object sender, EventArgs e)
+        private async void btnFilterDekho_Click(object sender, EventArgs e)
         {
-            string filterParam = txtFilterDekho.Text;
+            //string filterParam = AttributeList.SelectedItem.ToString();
 
-            Task.Run(async () =>
+            //Task.Run(async () =>
+            //{
+            //    await ReturnFiltered(filterParam);
+            //});
+
+            int filterColumn = -1;
+            string filterText = string.Empty;
+            string filterParam = string.Empty;
+
+            this.Invoke(new Action(() =>
             {
-                await ReturnFiltered(filterParam);
-            });
+                filterColumn = AttributeList.SelectedIndex;
+                filterText = cmbFilter.Text;
+            }));
+
+            if (filterColumn == -1)
+            {
+                await UpdateConsole("Filter By Parameter not selected!. Exitting...");
+                return;
+            }
+            else
+            {
+                filterParam = AttributeList.SelectedItem.ToString();
+            }
+
+            PropertyInfo[] propertyInfos = typeof(DekhoModel).GetProperties();
+
+            var theProperty = propertyInfos
+                .FirstOrDefault(x => x.Name == filterParam);
+
+            var filteredEnumerable = listDekhoCars
+                .Where(x => theProperty.GetValue(x).ToString() == filterText);
+
+            var filtered = new List<DekhoModel>();
+
+            switch (sortType)
+            {
+                case 0:
+                    filtered = filteredEnumerable
+                        .ToList();
+                    break;
+
+                case 1:
+                    filtered = filteredEnumerable
+                        .OrderBy(x => x.Year)
+                        .ToList();
+                    break;
+
+                case 2:
+                    filtered = filteredEnumerable
+                        .OrderByDescending(x => x.Year)
+                        .ToList();
+                    break;
+            }
+
+            string serializedFiltered = JsonConvert.SerializeObject(filtered, Formatting.Indented);
+            await UpdateConsole($"Filtered Output:\r\n{serializedFiltered}");
         }
         private void AttributeList_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -79,8 +139,58 @@ namespace CarDekhoExcel
                 .Distinct()
                 .ToList();
 
+            cmbFilter.Text = "";
+
             cmbFilter.Items.Clear();
+            this.Invoke(new Action(() =>
+            {
+                btnFilterDekho.Enabled = false;
+            }));
+
             cmbFilter.Items.AddRange(filtered.ToArray());
+
+            if (filtered.Count > 0)
+            {
+                this.Invoke(new Action(() =>
+                {
+                    btnFilterDekho.Enabled = true;
+                }));
+            }
+        }
+
+        private void frmDekho_Load(object sender, EventArgs e)
+        {
+            rbAsc.CheckedChanged += RadioButtons_CheckedChanged;
+            rbDesc.CheckedChanged += RadioButtons_CheckedChanged;
+            rbNone.CheckedChanged += RadioButtons_CheckedChanged;
+        }
+
+        private void RadioButtons_CheckedChanged(object sender, EventArgs e)
+        {
+            RadioButton rb = (RadioButton)sender;
+
+            if (rb.Checked)
+            {
+                switch (rb.Name)
+                {
+                    case "rbAsc":
+                        sortType = 1;
+                        break;
+
+                    case "rbDesc":
+                        sortType = 2;
+                        break;
+
+                    case "rbNone":
+                        sortType = 0;
+                        break;
+                }
+            }
+        }
+
+        private void txtConsole_DoubleClick(object sender, EventArgs e)
+        {
+            txtConsole.Clear();
         }
     }
 }
