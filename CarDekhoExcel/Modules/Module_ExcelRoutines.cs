@@ -87,13 +87,71 @@ namespace CarDekhoExcel
             Marshal.ReleaseComObject(xlApp);
         }
 
-        private async Task ReturnFiltered()
+        private async Task ReturnFiltered(string filterParam)
         {
-            await UpdateConsole("Filtering Data...");
+            await UpdateConsole("Filtering data...");
 
-            List<object> filtered_dekho = 
+            if (listDekhoCars == null)
+            {
+                await UpdateConsole("List Dekho has not been initialised!\r\nQuitting");
+                return;
+            }
 
+            if (listDekhoCars.Count == 0)
+            {
+                await UpdateConsole("List Dekho kosong Mek!\r\nQuitting");
+                return;
+            }
 
+            
+            //can be edited according to preferences
+            var filtered = listDekhoCars
+                .Where(x => x.Brand.ToLower().Contains(filterParam.ToLower().Trim()))
+                //.Where(y=>y.Year <= 2001)
+                .OrderByDescending(x=>x.Year)
+                .ToList();
+
+            this.Invoke(new Action(async () =>
+            {
+                string theOutput = "The filtered results:\r\n\r\n";
+
+                await UpdateConsole(theOutput);
+
+                //string lineOutput = "Brand\t\tModel\t\tYear\t\tSellingPrice\t\tDriven KM\t\tFuel\t\tSeller\t\tTransmission\t\tOwner";
+
+                //txtConsole.AppendText(theOutput);
+
+                //foreach (var item in filtered)
+                //{
+                //    lineOutput = $"{item.Brand}\t\t" +
+                //    $"{item.Model}\t\t" +
+                //    $"{item.Year}\t\t" +
+                //    $"{item.SellingPrice}\t\t" +
+                //    $"{item.DrivenKM}\t\t" +
+                //    $"{item.Fuel}\t\t" +
+                //    $"{item.SellerType}\t\t" +
+                //    $"{item.Transmission}\t\t" +
+                //    $"{item.Owner}\r\n";
+
+                string lineOutput = "Brand\tModel\t\tYear\tSellingPrice\tDriven KM\tFuel\tSeller\tTransmission\tOwner\r\n";
+
+                txtConsole.AppendText(lineOutput);
+
+                foreach (var item in filtered)
+                {
+                    lineOutput = $"{item.Brand,-10}\t" +
+                    $"{item.Model,-10}\t\t\t{item.Year, -20}\t" +
+                    $"{item.SellingPrice,-12}\t" +
+                    $"{item.DrivenKM,-10}\t" +
+                    $"{item.Fuel,-8}\t" +
+                    $"{item.SellerType,-10}\t" +
+                    $"{item.Transmission,-12}\t" +
+                    $"{item.Owner,-5}\r\n";
+
+                    txtConsole.AppendText(lineOutput);
+                }
+                txtConsole.AppendText("\r\n\r\n");
+            }));
         }
     }
 }

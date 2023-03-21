@@ -52,5 +52,15 @@ namespace CarDekhoExcel
                 await LoadDataSource();
             });
         }
+
+        private void btnFilterDekho_Click(object sender, EventArgs e)
+        {
+            string filterParam = txtFilterDekho.Text;
+
+            Task.Run(async () =>
+            {
+                await ReturnFiltered(filterParam);
+            });
+        }
     }
 }

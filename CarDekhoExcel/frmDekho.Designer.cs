@@ -39,7 +39,7 @@
             // 
             this.pbProgress.Location = new System.Drawing.Point(12, 517);
             this.pbProgress.Name = "pbProgress";
-            this.pbProgress.Size = new System.Drawing.Size(776, 33);
+            this.pbProgress.Size = new System.Drawing.Size(1687, 33);
             this.pbProgress.TabIndex = 6;
             this.pbProgress.Visible = false;
             // 
@@ -49,7 +49,8 @@
             this.txtConsole.Multiline = true;
             this.txtConsole.Name = "txtConsole";
             this.txtConsole.ReadOnly = true;
-            this.txtConsole.Size = new System.Drawing.Size(776, 271);
+            this.txtConsole.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.txtConsole.Size = new System.Drawing.Size(1687, 271);
             this.txtConsole.TabIndex = 5;
             // 
             // btnLoadDekho
@@ -70,6 +71,7 @@
             this.btnFilterDekho.TabIndex = 8;
             this.btnFilterDekho.Text = "Filter Dekho";
             this.btnFilterDekho.UseVisualStyleBackColor = true;
+            this.btnFilterDekho.Click += new System.EventHandler(this.btnFilterDekho_Click);
             // 
             // txtFilterDekho
             // 
@@ -82,7 +84,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(798, 564);
+            this.ClientSize = new System.Drawing.Size(1711, 564);
             this.Controls.Add(this.txtFilterDekho);
             this.Controls.Add(this.btnFilterDekho);
             this.Controls.Add(this.btnLoadDekho);
