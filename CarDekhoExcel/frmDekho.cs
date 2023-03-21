@@ -1,9 +1,11 @@
-﻿using System;
+using CarDekhoExcel.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -61,6 +63,24 @@ namespace CarDekhoExcel
             {
                 await ReturnFiltered(filterParam);
             });
+        }
+        private void AttributeList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string filterParam = AttributeList.SelectedItem.ToString();
+
+            PropertyInfo[] propertyInfos = typeof(DekhoModel).GetProperties();
+
+            var theProperty = propertyInfos
+                .FirstOrDefault(x => x.Name == filterParam);
+
+
+            var filtered = listDekhoCars
+                .Select(x => theProperty.GetValue(x))
+                .Distinct()
+                .ToList();
+
+            cmbFilter.Items.Clear();
+            cmbFilter.Items.AddRange(filtered.ToArray());
         }
     }
 }
