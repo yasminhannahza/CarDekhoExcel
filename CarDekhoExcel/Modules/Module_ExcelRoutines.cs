@@ -143,7 +143,8 @@ namespace CarDekhoExcel
 
                     txtConsole.AppendText(lineOutput);
                 }
-                
+
+                //label1.Text = $"Total Records: {filtered.Count}";
 
                 txtConsole.AppendText("\r\n\r\n");
             }));

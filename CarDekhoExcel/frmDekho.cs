@@ -123,6 +123,7 @@ namespace CarDekhoExcel
 
             string serializedFiltered = JsonConvert.SerializeObject(filtered, Formatting.Indented);
             await UpdateConsole($"Filtered Output:\r\n{serializedFiltered}");
+            label1.Text = $"Total Records: {filtered.Count}";
         }
         private void AttributeList_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -192,5 +193,7 @@ namespace CarDekhoExcel
         {
             txtConsole.Clear();
         }
+
+     
     }
 }

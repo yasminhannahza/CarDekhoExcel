@@ -33,6 +33,7 @@ namespace CarDekhoExcel
             this.btnFilterDekho = new System.Windows.Forms.Button();
             this.btnLoadDekho = new System.Windows.Forms.Button();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.label1 = new System.Windows.Forms.Label();
             this.FilterBox = new System.Windows.Forms.GroupBox();
             this.cmbFilter = new System.Windows.Forms.ComboBox();
             this.DisplayAttr = new System.Windows.Forms.Label();
@@ -62,7 +63,7 @@ namespace CarDekhoExcel
             this.txtConsole.Name = "txtConsole";
             this.txtConsole.ReadOnly = true;
             this.txtConsole.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtConsole.Size = new System.Drawing.Size(863, 363);
+            this.txtConsole.Size = new System.Drawing.Size(868, 365);
             this.txtConsole.TabIndex = 5;
             this.txtConsole.DoubleClick += new System.EventHandler(this.txtConsole_DoubleClick);
             // 
@@ -71,7 +72,7 @@ namespace CarDekhoExcel
             this.pbProgress.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pbProgress.Location = new System.Drawing.Point(0, 0);
             this.pbProgress.Name = "pbProgress";
-            this.pbProgress.Size = new System.Drawing.Size(863, 28);
+            this.pbProgress.Size = new System.Drawing.Size(868, 29);
             this.pbProgress.TabIndex = 6;
             this.pbProgress.Visible = false;
             // 
@@ -105,6 +106,7 @@ namespace CarDekhoExcel
             // 
             // splitContainer1.Panel1
             // 
+            this.splitContainer1.Panel1.Controls.Add(this.label1);
             this.splitContainer1.Panel1.Controls.Add(this.FilterBox);
             this.splitContainer1.Panel1.Controls.Add(this.Title);
             this.splitContainer1.Panel1.Controls.Add(this.btnLoadDekho);
@@ -112,9 +114,17 @@ namespace CarDekhoExcel
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.splitContainer2);
-            this.splitContainer1.Size = new System.Drawing.Size(863, 587);
-            this.splitContainer1.SplitterDistance = 188;
+            this.splitContainer1.Size = new System.Drawing.Size(868, 591);
+            this.splitContainer1.SplitterDistance = 189;
             this.splitContainer1.TabIndex = 11;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(13, 158);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(0, 16);
+            this.label1.TabIndex = 10;
             // 
             // FilterBox
             // 
@@ -218,7 +228,7 @@ namespace CarDekhoExcel
             this.Title.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Title.AutoSize = true;
             this.Title.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Title.Location = new System.Drawing.Point(314, 9);
+            this.Title.Location = new System.Drawing.Point(317, 9);
             this.Title.Name = "Title";
             this.Title.Size = new System.Drawing.Size(156, 36);
             this.Title.TabIndex = 6;
@@ -238,15 +248,15 @@ namespace CarDekhoExcel
             // splitContainer2.Panel2
             // 
             this.splitContainer2.Panel2.Controls.Add(this.pbProgress);
-            this.splitContainer2.Size = new System.Drawing.Size(863, 395);
-            this.splitContainer2.SplitterDistance = 363;
+            this.splitContainer2.Size = new System.Drawing.Size(868, 398);
+            this.splitContainer2.SplitterDistance = 365;
             this.splitContainer2.TabIndex = 0;
             // 
             // frmDekho
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(863, 587);
+            this.ClientSize = new System.Drawing.Size(868, 591);
             this.Controls.Add(this.splitContainer1);
             this.Name = "frmDekho";
             this.Text = "Car Dekho?";
@@ -284,6 +294,7 @@ namespace CarDekhoExcel
         private System.Windows.Forms.Label Sort;
         private System.Windows.Forms.ComboBox cmbFilter;
         private System.Windows.Forms.Label DisplayAttr;
+        private System.Windows.Forms.Label label1;
     }
 }
 
